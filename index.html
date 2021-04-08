@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Quiz</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <nav>
+        <p>View high scores</p>
+        <p>Time: <span id="count">0</span></p>
+    </nav>
+    <div class=front-page>
+        <h1 class="page-title">Coding Quiz</h1>
+        <p> Try to answer the following code-related questions within the time limit.
+            Keep in mind that incorrect answers will penalize your score/time by ten seconds!
+        </p>
+        <button class="btn" id="start">
+            Start Quiz
+        </button>
+    </div>
+    <div class="hidden questions">
+        <h2 id="q"></h2>
+        <ul>
+            <li id="0" value="A"></li>
+            <li id="1" value="B"></li>
+            <li id="2" value="C"></li>
+            <li id="3" value="D"></li>
+        </ul>
+    </div>
+    <div class="enter-initials hidden">
+        <h3>Enter your initials to save your score!</h3>
+        <form id="initials-form">
+            <div class="input">
+                <input type="text" name="initials-input" placeholder="Enter Initials">
+            </div>
+            <div class="button">
+                <button class="btn" id="submit-initials">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="display-highscores hidden">
+
+    </div>
+    <script src=./assets/js/script.js></script>
+</body>
+
+</html>

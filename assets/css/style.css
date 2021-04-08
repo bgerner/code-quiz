@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    font-family: 'Times New Roman', Times, serif;
+}
+.front-page
+.enter-initials {
+    flex-direction: column;
+    text-align: center;
+}
+.page-title {
+    font-weight: bold;
+}
+.btn {
+    border-radius: 12px;
+    background-color: orange;
+    font-style: italic;
+}
+.hidden {
+    display: none;
+}
+ul {
+    list-style: none;
+}
