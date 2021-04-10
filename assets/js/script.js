@@ -1,7 +1,6 @@
-// how do i get the value of the timeLeft when the quiz is completed/ endGame function is called
-// how do i end the game once the array has been run through? - isLast()?
+// how do i get the value of the timeLeft when the quiz is completed/ endGame function is called so I can add it to the current score to produce the final score to be saved to localStorage
 // submit button won't present highscores page
-// isLast triggers endGame every fucking time
+// how do i add the recently recorded score to the list of previous ones to be presented on the highscore page?
 
 var frontPageEl = document.querySelector('.front-page');
 var navEl = document.querySelector('nav');
@@ -51,22 +50,12 @@ var startTimer = function() {
 }
 
 var nextQuestion = function() {
-    console.log("nextQuestion is running");
+    console.log(currentQuestionIndex);
     var currentQuestion = questionsArray[currentQuestionIndex];
     qEl.textContent = currentQuestion.q;
     for (let i = 0; i < currentQuestion.a.length; i++) {
         const currentAnswer = currentQuestion.a[i];
         document.getElementById(i).textContent = currentAnswer
-    }
-}
-
-var isLast = function(i) {
-    console.log("isLast is running");
-    if (questionsArray[currentQuestionIndex] = questionsArray.length) {
-        endGame();
-    }
-    else {
-        nextQuestion();
     }
 }
 
@@ -85,10 +74,17 @@ var checkAnswer = function(event) {
 
     currentQuestionIndex++;
 
-    isLast(currentQuestionIndex);
 
-    // endGame();
-    // return timeLeft
+// change following value of 5 to (questionsArray.length + 1) which should just work on its own within the if statement but somehow breaks the fucking code
+    if (currentQuestionIndex === 5) {
+        console.log("endgame is about to run");
+        endGame();
+    }
+    else {
+        nextQuestion();
+    }
+
+    // return timeLeft??
 }
 
 var questionsArray = [
@@ -96,35 +92,27 @@ var questionsArray = [
         q: "What is the first parameter in the setInterval method?",
         a: ["A: time in milliseconds", "B: eventListener", "C: for loop", "D: function"],
         c: "D: function",
-        l: false
     },
     {
         q: "What property is used to add a class to an element without replacing other classes already attached to the element?",
         a: ["A: element.className()", "B: element.classList.add()", "C: element.classAdd", "D: element.addClass"],
         c: "B: element.classList.add()",
-        l: false
     },
     {
         q: "Which of the following is not equivalent in functionality to a div?",
         a: ["A: main", "B: block", "C: aside", "D: header"],
         c: "B: block",
-        l: false
     },
     {
         q: "How does one remove the default dots in front of li items within a ul tag? (using CSS on the ul tag)",
         a: ["A: padding: 0", "B: display: ruby", "C: list-style: none", "D: text-decoration: none"],
         c: "C: list-style: none",
-        l: false
     },
     {
         q: "How does one add a data item to local storage?",
         a: ["A: localStorage.plus('*item key*', '*item value*')", "B: localStorage.add('*item key*', '*item value*')", "C: localStorage.setItem('*item key*', '*item value*')", "D: localStorage.getItem('*item key*', '*item value*')"],
         c: "C: localStorage.setItem('*item key*', '*item value*')",
-        l: false
     },
-    {
-        l: true
-    }
 ];
 
 var endGame = function() {
@@ -133,7 +121,7 @@ var endGame = function() {
     navEl.classList.add('hidden');
     initialsEl.classList.remove('hidden');
 
-    // return timeLeft?
+    // return timeLeft??
 }
 
 var saveScore = function () {
