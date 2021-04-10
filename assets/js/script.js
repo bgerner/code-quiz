@@ -48,7 +48,7 @@ var nextQuestion = function() {
     for (let i = 0; i < currentQuestion.a.length; i++) {
         const currentAnswer = currentQuestion.a[i];
         document.getElementById(i).textContent = currentAnswer
-    }  
+    }
 }
 
 var checkAnswer = function(event) {
@@ -65,7 +65,8 @@ var checkAnswer = function(event) {
     currentQuestionIndex++;
 
     nextQuestion();
-    console.log(currentQuestionIndex);
+    
+    console.log('currentQuestionIndex: ' + currentQuestionIndex);
     // endGame();
     // return timeLeft
 }
@@ -95,7 +96,7 @@ var questionsArray = [
         q: "How does one add a data item to local storage?",
         a: ["A: localStorage.plus('*item key*', '*item value*')", "B: localStorage.add('*item key*', '*item value*')", "C: localStorage.setItem('*item key*', '*item value*')", "D: localStorage.getItem('*item key*', '*item value*')"],
         c: "C: localStorage.setItem('*item key*', '*item value*')"
-    }
+    },
 ];
 
 var endGame = function() {
@@ -105,6 +106,7 @@ var endGame = function() {
     console.log('game has ended');
     // return timeLeft
 }
+
 
 startBtnEl.addEventListener("click", startQuiz);
 a1.addEventListener("click", checkAnswer);
