@@ -11,7 +11,7 @@
 
 <body>
     <nav>
-        <p>View high scores</p>
+        <button id="view-scores">View high scores</button>
         <p>Time: <span id="count">0</span></p>
     </nav>
     <div class=front-page>
@@ -34,6 +34,7 @@
     </div>
     <div class="enter-initials hidden">
         <h3>Enter your initials to save your score!</h3>
+        <p id="current-score"></p>
         <form id="initials-form">
             <div class="input">
                 <input type="text" name="initials-input" placeholder="Enter Initials">
@@ -46,7 +47,11 @@
         </form>
     </div>
     <div class="display-highscores hidden">
-        <ul class="highscores"></ul>
+        <h2>Highscores</h2>
+        <ul id="highscores"></ul>
+        <button class="btn" id="refresh">
+            Restart
+        </button>
     </div>
     <script src=./assets/js/script.js></script>
 </body>

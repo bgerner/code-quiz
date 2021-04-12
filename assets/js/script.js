@@ -7,18 +7,27 @@ var navEl = document.querySelector('nav');
 var questionsEl = document.querySelector('.questions');
 var initialsEl = document.querySelector('.enter-initials');
 var highscoreEl = document.querySelector('.display-highscores');
-var startBtnEl = document.querySelector('#start');
 var qEl = document.querySelector('#q');
 var timerEl = document.getElementById('count');
 var a1 = document.getElementById('0');
 var a2 = document.getElementById('1');
 var a3 = document.getElementById('2');
 var a4 = document.getElementById('3');
+var highscoresUlEl = document.getElementById('highscores');
+var currentScore = document.getElementById('current-score');
+
+var scoresBtnEl = document.querySelector('#view-scores')
+var startBtnEl = document.querySelector('#start');
 var submitBtnEl = document.querySelector('#submit-initials');
-var highscoresUlEl = document.getElementsByClassName('highscores');
+var refreshBtnEl = document.querySelector('#refresh')
+
+console.log(highscoresUlEl);
+
+var scoresArray = JSON.parse(localStorage.getItem("score")) || [];
 
 var currentQuestionIndex = 0;
 
+var timeInterval
 
 
 var score = 0;
@@ -34,7 +43,7 @@ var startQuiz = function() {
 
 var startTimer = function() {
     console.log("startTimer is running");
-    var timeInterval = setInterval(function() {
+    timeInterval = setInterval(function() {
         if (timeLeft > 0) {
             timerEl.textContent = timeLeft;
             timeLeft--
@@ -43,7 +52,6 @@ var startTimer = function() {
             timeInterval.textContent = '';
             clearInterval(timeInterval);
             alert("Time's up!");
-            score=0;
             endGame();
         }
     }, 1000);
@@ -65,7 +73,6 @@ var checkAnswer = function(event) {
     
     if (questionsArray[currentQuestionIndex].c === answerText) {
         alert("Yup!");
-        score++;
     }
     else {
         alert("Nope!")
@@ -74,17 +81,14 @@ var checkAnswer = function(event) {
 
     currentQuestionIndex++;
 
-
-// change following value of 5 to (questionsArray.length + 1) which should just work on its own within the if statement but somehow breaks the fucking code
-    if (currentQuestionIndex === 5) {
+    if (currentQuestionIndex === questionsArray.length) {
         console.log("endgame is about to run");
+        clearInterval(timeInterval);
         endGame();
     }
     else {
         nextQuestion();
     }
-
-    // return timeLeft??
 }
 
 var questionsArray = [
@@ -116,42 +120,57 @@ var questionsArray = [
 ];
 
 var endGame = function() {
-    console.log('endGame is running');
+    score = timeLeft;
+    currentScore.innerText = "Your score is " + score + "!"
     questionsEl.classList.add('hidden');
     navEl.classList.add('hidden');
     initialsEl.classList.remove('hidden');
-
-    // return timeLeft??
 }
 
-var saveScore = function () {
+var saveScore = function (event) {
+    event.preventDefault();
     console.log('saveScore is running');
     var initialsInput = document.querySelector("input[name='initials-input']").value;
-    if(initialsInput.value === "") {
+    if(initialsInput === "") {
         alert("Initials cannot be blank!");
         return false
     }
     else {
-        var savedScores = JSON.parse(localStorage.getItem("score")) || [];
-        var currentScore = initialsInput
-        // ?.push(currentHighscore);
-        localStorage.setItem("score", initialsInput + ": " + JSON.parse(score + timeLeft));
+        scoresArray.push({initials: initialsInput, score: score});
+        localStorage.setItem("score", JSON.stringify(scoresArray));
         showScores();
     }
 }
 
 var showScores = function() {
-    console.log("showScores is running");
+    frontPageEl.classList.add('hidden');
+    questionsEl.classList.add('hidden');
+    navEl.classList.add('hidden');
     initialsEl.classList.add('hidden');
     highscoreEl.classList.remove('hidden');
-    for (let i = 0; i < localStorage.length; i++) {
-        localStorage.getItem(localStorage.score(i));
 
+    scoresArray.sort(function(a, b) {
+        return parseInt(b.score) - parseInt(a.score)
     }
+    )
+    
+    for (let i = 0; i < scoresArray.length; i++) {
+        scoresArray[i];
+        var highscoreLiEl = document.createElement("li");
+        highscoreLiEl.innerText = scoresArray[i].initials + ": " + scoresArray[i].score;
+        highscoresUlEl.appendChild(highscoreLiEl);
+    }
+};
+
+var refreshPage = function() {
+    window.location.reload();
 }
 
-submitBtnEl.addEventListener("click", saveScore);
+scoresBtnEl.addEventListener("click", showScores)
 startBtnEl.addEventListener("click", startQuiz);
+submitBtnEl.addEventListener("click", saveScore);
+refreshBtnEl.addEventListener("click", refreshPage)
+
 a1.addEventListener("click", checkAnswer);
 a2.addEventListener("click", checkAnswer);
 a3.addEventListener("click", checkAnswer);

@@ -2,15 +2,11 @@
     box-sizing: border-box;
 }
 body {
-    background: #ffffff;
-    margin: 0;
+    background: #444444;
+    color: #ffffff;
+    margin: 0 auto;
     padding: 0;
-    display: flex;
     font-family: 'Times New Roman', Times, serif;
-}
-.front-page
-.enter-initials {
-    flex-direction: column;
     text-align: center;
 }
 .page-title {
@@ -20,10 +16,27 @@ body {
     border-radius: 12px;
     background-color: orange;
     font-style: italic;
+    margin-top: 10px;
 }
 .hidden {
     display: none;
 }
 ul {
     list-style: none;
+}
+#view-scores {
+    position: fixed;
+    border: 1px solid black;
+    background-color: blanchedalmond;
+    top: 15px;
+    right: 5px
+}
+nav p {
+    position: fixed;
+    top: 0px;
+    left: 5px;
+
+}
+#q {
+    margin-top: 50px;
 }
