@@ -10,6 +10,14 @@ Once the showScores function has been called (following a click of the 'View Sco
 
 Screenshots:
 
+<img width="1071" alt="Screen Shot 2021-04-12 at 2 52 06 PM" src="https://user-images.githubusercontent.com/79947732/114462360-2c958080-9ba0-11eb-88a7-5f30313b587b.png">
+<img width="1075" alt="Screen Shot 2021-04-12 at 2 52 23 PM" src="https://user-images.githubusercontent.com/79947732/114462367-2ef7da80-9ba0-11eb-990f-115823e15577.png">
+<img width="1074" alt="Screen Shot 2021-04-12 at 2 52 38 PM" src="https://user-images.githubusercontent.com/79947732/114462384-33bc8e80-9ba0-11eb-9dd5-e9837e74a80f.png">
+<img width="373" alt="Screen Shot 2021-04-12 at 2 53 42 PM" src="https://user-images.githubusercontent.com/79947732/114462389-35865200-9ba0-11eb-84d4-804d59e0f695.png">
+<img width="278" alt="Screen Shot 2021-04-12 at 2 54 25 PM" src="https://user-images.githubusercontent.com/79947732/114462393-36b77f00-9ba0-11eb-859f-e3ba933e7fa9.png">
+
+
 
 Link to deployed application:
 
+https://bgerner.github.io/code-quiz/
