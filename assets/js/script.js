@@ -15,6 +15,7 @@ var a3 = document.getElementById('2');
 var a4 = document.getElementById('3');
 var highscoresUlEl = document.getElementById('highscores');
 var currentScore = document.getElementById('current-score');
+var correct = document.getElementById('correct-incorrect');
 
 var scoresBtnEl = document.querySelector('#view-scores')
 var startBtnEl = document.querySelector('#start');
@@ -72,17 +73,16 @@ var checkAnswer = function(event) {
     var answerText = event.target.textContent;
     
     if (questionsArray[currentQuestionIndex].c === answerText) {
-        alert("Yup!");
+        correct.innerText = "Previous answer: Correct!";
     }
     else {
-        alert("Nope!")
+        correct.innerText = "Previous answer: Incorrect";
         timeLeft = timeLeft - 10;
     }
 
     currentQuestionIndex++;
 
     if (currentQuestionIndex === questionsArray.length) {
-        console.log("endgame is about to run");
         clearInterval(timeInterval);
         endGame();
     }
